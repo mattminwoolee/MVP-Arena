@@ -1,0 +1,17 @@
+:local .mainBoard {
+  width: 65vw;
+  border-style: solid;
+  border-width: 1px;
+}
+
+:local .gridBoard {
+  margin: 5%;
+  display: grid;
+  grid-template-columns: repeat(11, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+}
+
+:local .gridBoard > div {
+  border-style: solid;
+  border-width: 1px;
+}

@@ -1,0 +1,11 @@
+:local .appContainer {
+  width: 90vw;
+  text-align: center;
+  margin: auto;
+}
+
+:local .main {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
