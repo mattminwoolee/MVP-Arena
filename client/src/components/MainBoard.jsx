@@ -22,15 +22,16 @@ class MainBoard extends React.Component {
   }
 
   handleClick(e) {
-    console.log('target', e.target);
-    let row = e.target.x;
-    let col = e.target.y;
+    console.log('event: ', e.target)
+    let row =  e.target.attributes.x.value;
+    let col =  e.target.attributes.y.value;
     var newBoard = this.state.mainBoard;
     newBoard[row][col] = 1;
+    console.log('newBoard: ', newBoard);
 
-    this.setState = {
+    this.setState({
       mainBoard: newBoard,
-    }
+    });
   }
 
   render() {
@@ -40,8 +41,9 @@ class MainBoard extends React.Component {
           <ButtonPanel />
         </div>
         <div className={ styles.gridBoard }>
-          {this.props.board.map( (row, rowIndex) => row.map( (position, colIndex) => <Position 
+          {this.state.mainBoard.map( (row, rowIndex) => row.map( (positionValue, colIndex) => <Position 
           key={`${rowIndex}&${colIndex}`} 
+          value={positionValue}
           x={rowIndex} 
           y={colIndex}
           handleClick={this.handleClick}
