@@ -9,7 +9,9 @@ class MainBoard extends React.Component {
     this.state = {
       name: '',
       previous: '',
-      dancers: [],
+      totalDancers: 0,
+      dancers: {},
+      changePositionMode: {isOn: false, dancerId: null},
       mainBoard: [
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -22,6 +24,7 @@ class MainBoard extends React.Component {
       ]
     }
     this.handleClick = this.handleClick.bind(this);
+    this.handleAlreadyClicked = this.handleAlreadyClicked.bind(this);
     this.clearStage = this.clearStage.bind(this);
     this.saveBoard = this.saveBoard.bind(this);
   }
@@ -30,21 +33,61 @@ class MainBoard extends React.Component {
     console.log('event: ', e.target)
     let row =  e.target.attributes.x.value;
     let col =  e.target.attributes.y.value;
-    var newBoard = this.state.mainBoard;
-    var newDancers = this.state.dancers;
-    newDancers.push({id: newDancers.length, x: row, y: col});
-    newBoard[row][col] = 1;
-    console.log('newBoard: ', newBoard);
+    let dancers = this.state.dancers;
+    let newBoard = this.state.mainBoard;
+    let id = this.state.totalDancers;
 
+    if (!this.state.changePositionMode.isOn) {
+      // save dancer info
+      id++;
+      dancers[id] = {x: row, y: col};
+      // update board
+      newBoard[row][col] = id; // display id number of the dancer
+      console.log('newBoard: ', newBoard);
+      this.setState({
+        totalDancers: id,
+      })
+    } else {
+      // if change position mode is on, save previous dancer info and update dancer info
+      id = this.state.changePositionMode.dancerId;
+
+      // store
+      let prevRow = dancers[id].x;
+      let prevCol = dancers[id].y;
+
+      // update dancers 
+      dancers[id] = {x: row, y: col};
+
+      // update board
+      newBoard[prevRow][prevCol] = 0;
+      newBoard[row][col] = Number(id);
+      this.setState({
+        changePositionMode: {isOn: false, dancerId: null},
+      })
+    }
+
+    // update dancers and board
     this.setState({
-      dancers: newDancers,
+      dancers: dancers,
       mainBoard: newBoard,
     });
+  }
+
+  handleAlreadyClicked(e) {
+    console.log('dancer already cliked: ', e.target.attributes.value.value);
+    let dancerId = e.target.attributes.value.value;
+
+    // save the dancer id and enter change mode
+    this.setState({
+      changePositionMode: {isOn: true, dancerId: dancerId}, 
+    })
+
   }
 
   clearStage() {
     this.setState({
       dancers: [],
+      changePositionMode: {isOn: false, dancerId: null},
       mainBoard:[
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -80,6 +123,7 @@ class MainBoard extends React.Component {
           x={rowIndex} 
           y={colIndex}
           handleClick={this.handleClick}
+          handleAlreadyClicked={this.handleAlreadyClicked}
           /> ))}
         </div>
       </div>
