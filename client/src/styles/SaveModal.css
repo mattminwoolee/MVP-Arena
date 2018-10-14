@@ -1,0 +1,31 @@
+:local .modal {
+  z-index: 2;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width:100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 4px;
+}
+
+:local .modalMain {
+  border-radius: 4px;
+  padding: 3vmin;
+  z-index: 2;
+  position:fixed;
+  background: white;
+  width: 100vmin;
+  height: auto;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+}
+
+:local .display {
+  display: block;
+}
+
+:local .displayNone {
+  display: none;
+}

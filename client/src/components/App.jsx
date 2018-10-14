@@ -8,17 +8,23 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      // board: [
-      //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      // ]
+      collection: [{id: 1}, {id:2}, {id:3}]
     }
+  }
+
+  componentDidMount() {
+    $.ajax({
+      url: `/api/stages`,
+      method: 'GET',
+      contentType: 'application/json',
+      success: (data) => {
+        let newCollection = this.state.collection;
+        newCollection.push(data);
+        this.setState({
+          collection: newCollection,
+        });
+      },
+    })
   }
 
   render() {
@@ -29,7 +35,7 @@ class App extends React.Component {
         </h1>
         <hr/>
         <div className={ styles.main }>
-          <SlideDeck />
+          <SlideDeck collection={this.state.collection}/>
           <MainBoard />
         </div>
         <br/>

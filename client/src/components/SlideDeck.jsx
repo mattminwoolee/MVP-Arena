@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './../styles/SlideDeck.css';
+import Slide from './Slide.jsx';
 
 class SlideDeck extends React.Component {
   constructor(props) {
@@ -9,7 +10,9 @@ class SlideDeck extends React.Component {
   render() {
     return(
       <div className={ styles.slideDeck }>
-        This is the Slide Deck
+        {
+          this.props.collection.map( (slide, index) => <Slide key={index} slide={slide}/>)
+        }
       </div>
     )
   };

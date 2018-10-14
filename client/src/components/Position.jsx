@@ -11,13 +11,16 @@ class Position extends React.Component {
       <div className={ styles.position }>
         {
           this.props.value == 1 
-          ? (<div>O</div>) 
+          ? (<div
+              value={this.props.value}
+              x={this.props.x} 
+              y={this.props.y}
+              onClick={this.props.handleClick}>O</div>) 
           : (<div
               value={this.props.value}
               x={this.props.x} 
               y={this.props.y}
-              onClick={this.props.handleClick}>&nbsp;
-              </div>)
+              onClick={this.props.handleClick}>&nbsp;</div>)
         }
       </div>
     )

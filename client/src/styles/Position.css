@@ -1,0 +1,7 @@
+:local .position {
+  vertical-align: middle;
+}
+:local .position > div {
+  display: flex;
+  justify-content: center;
+}

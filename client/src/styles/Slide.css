@@ -1,0 +1,7 @@
+:local .slide {
+  border-style: solid;
+  border-width: 1px;
+  width: 25vmin;
+  height: 10vmin; 
+  margin: 3vmin auto;
+}

@@ -1,5 +1,6 @@
 :local .appContainer {
-  width: 90vw;
+  font-size: 3vmin;
+  width: 165vmin;
   text-align: center;
   margin: auto;
 }

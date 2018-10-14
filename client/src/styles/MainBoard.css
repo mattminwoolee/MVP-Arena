@@ -1,14 +1,14 @@
 :local .mainBoard {
-  width: 65vw;
+  width: 120vmin;
   border-style: solid;
   border-width: 1px;
 }
 
 :local .gridBoard {
-  margin: 5%;
+  margin: 5vmin;
   display: grid;
-  grid-template-columns: repeat(11, 1fr);
-  grid-template-rows: repeat(8, 1fr);
+  grid-template-columns: repeat(11, 10vmin);
+  grid-template-rows: repeat(8, 6vmin);
 }
 
 :local .gridBoard > div {
