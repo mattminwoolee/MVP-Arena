@@ -17,7 +17,6 @@ class Position extends React.Component {
       })
       this.props.handleClick(e);
     } else {
-      console.log('hi');
       this.setState({
         isFilled: false
       })
@@ -30,11 +29,12 @@ class Position extends React.Component {
       <div className={ styles.position }>
         {
           this.props.value !== 0 
-          ? (<div
-              value={this.props.value}
-              x={this.props.x} 
-              y={this.props.y}
-              onClick={this.handleDancerClick}>{this.props.value}</div>) 
+          ? (<div><div 
+            value={this.props.value}
+            x={this.props.x} 
+            y={this.props.y}
+            onClick={this.handleDancerClick}
+            className={styles.positionInner}>{this.props.value}</div></div>) 
           : (<div
               value={this.props.value}
               x={this.props.x} 

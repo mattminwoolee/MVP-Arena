@@ -2,7 +2,28 @@
   vertical-align: middle;
 }
 :local .position > div {
+  background-image: url('https://s3.us-east-2.amazonaws.com/mattminwoolee-mvp/images/cross.png');
+  background-repeat: no-repeat;
+  background-size: cover;  
+  background-position: center center;
+  line-height: 6vmin;
+}
+
+:local .positionInner {
+  background-image: url('https://s3.us-east-2.amazonaws.com/mattminwoolee-mvp/images/circleWithCross.png');
+  background-repeat: no-repeat;
+  background-size: cover;  
+  background-position: center center;
   display: flex;
   justify-content: center;
+  color: white;
+  font-size: 2vmin;
   line-height: 6vmin;
+
+  /* transform: translate(350px,0); */
+}
+
+:local .transitionObject {
+  position: absolute;
+  transition: all 2s ease-in-out; 
 }
