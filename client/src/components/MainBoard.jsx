@@ -87,6 +87,7 @@ class MainBoard extends React.Component {
   clearStage() {
     this.setState({
       dancers: [],
+      totalDancers: 0,
       changePositionMode: {isOn: false, dancerId: null},
       mainBoard:[
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -108,6 +109,15 @@ class MainBoard extends React.Component {
       board: this.state.mainBoard
     }
     console.log('data', data);
+    $.ajax({
+      url: 'http://localhost:3000/api/stages',
+      method: 'POST',
+      contentType: 'application/json',
+      data: JSON.stringify(data),
+      success: (response) => {
+        console.log('Success! ', response);
+      }
+    })
   }
 
   render() {

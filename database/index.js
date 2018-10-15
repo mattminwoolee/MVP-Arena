@@ -13,7 +13,8 @@ db.once('open', function() {
 
 var stageCollectionSchema = mongoose.Schema({
   name: String,
-  previous: String,
+  previous: Object,
+  next: Object,
   dancers: Object,
   board: Array
 });

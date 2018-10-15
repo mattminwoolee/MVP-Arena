@@ -12,14 +12,14 @@ app.get('/api/stages', (req, res) => {
 })
 
 app.post('/api/stages', bodyParser.json(), (req, res) => {
-  console.log('req.bodu: ', req.body);
-  db.saveBoard(req.body, (err, data) => {
-    if (err) {
-      res.send(err);
-    } else {
-      res.sendStatus(200);
-    }
-  })
+  console.log('req.body: ', req.body);
+  // db.saveBoard(req.body, (err, data) => {
+  //   if (err) {
+  //     res.send(err);
+  //   } else {
+  //     res.sendStatus(200);
+  //   }
+  // })
 })
 
 const PORT = 3000;
