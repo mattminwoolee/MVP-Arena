@@ -11,7 +11,7 @@ class SlideDeck extends React.Component {
     return(
       <div className={ styles.slideDeck }>
         {
-          this.props.collection.map( (slide, index) => <Slide key={index} slide={slide}/>)
+          this.props.collection.map( (slide, index) => <Slide key={index} slide={slide} displayBoard={this.props.displayBoard}/>)
         }
       </div>
     )

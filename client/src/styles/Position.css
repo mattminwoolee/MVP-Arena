@@ -4,4 +4,5 @@
 :local .position > div {
   display: flex;
   justify-content: center;
+  line-height: 6vmin;
 }

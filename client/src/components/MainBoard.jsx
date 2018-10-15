@@ -29,6 +29,15 @@ class MainBoard extends React.Component {
     this.saveBoard = this.saveBoard.bind(this);
   }
 
+  componentDidUpdate() {
+    // let board = this.props.clickedBoard;
+    // if (board) {
+    //   this.setState({
+    //     mainBoard: board.board,
+    //   })
+    // }
+  }
+
   handleClick(e) {
     console.log('event: ', e.target)
     let row =  e.target.attributes.x.value;
@@ -116,6 +125,7 @@ class MainBoard extends React.Component {
       data: JSON.stringify(data),
       success: (response) => {
         console.log('Success! ', response);
+        this.props.update();
       }
     })
   }

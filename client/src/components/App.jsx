@@ -8,20 +8,39 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      collection: [{id: 1}, {id:2}, {id:3}]
+      update: true,
+      collection: [],
+      clickedBoard: {}
     }
+    this.update = this.update.bind(this);
+    this.displayBoard = this.displayBoard.bind(this);
+  }
+  update(){
+    this.componentDidMount();
+  }
+
+  displayBoard(name) {
+    // console.log('display board', name);
+    $.ajax({
+      url: `/api/stage/${name}`,
+      method: 'GET',
+      success: (success) => {
+        console.log(success[0]);
+        this.setState({
+          clickedBoard: success[0]
+        })
+      }
+    })
   }
 
   componentDidMount() {
     $.ajax({
       url: `/api/stages`,
       method: 'GET',
-      contentType: 'application/json',
       success: (data) => {
-        let newCollection = this.state.collection;
-        newCollection.push(data);
+        // console.log('data: ', data);
         this.setState({
-          collection: newCollection,
+          collection: data,
         });
       },
     })
@@ -35,8 +54,8 @@ class App extends React.Component {
         </h1>
         <hr/>
         <div className={ styles.main }>
-          <SlideDeck collection={this.state.collection}/>
-          <MainBoard />
+          <SlideDeck displayBoard={this.displayBoard} collection={this.state.collection}/>
+          <MainBoard clickedBoard={this.state.clickedBoard} update={this.update}/>
         </div>
         <br/>
         <div className={ styles.musicPlayer}>

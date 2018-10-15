@@ -7,19 +7,36 @@ var app = express();
 
 app.use(express.static(__dirname + '/../client/dist'));
 
-app.get('/api/stages', (req, res) => {
+app.get('/api/stage/:name', (req, res) => {
+  console.log('req.params: ', req.params.name);
+  db.selectOne(req.params.name, (err, data) => {
+    if (err) {
+      res.send(err);
+    } else {
+      res.json(data);
+    }
+  })
+})
 
+app.get('/api/stages', (req, res) => {
+  db.selectAll( (err, data) => {
+    if (err) {
+      res.send(err);
+    } else {
+      res.json(data);
+    }
+  })
 })
 
 app.post('/api/stages', bodyParser.json(), (req, res) => {
-  console.log('req.body: ', req.body);
-  // db.saveBoard(req.body, (err, data) => {
-  //   if (err) {
-  //     res.send(err);
-  //   } else {
-  //     res.sendStatus(200);
-  //   }
-  // })
+  // console.log('req.body: ', req.body);
+  db.saveBoard(req.body, (err, data) => {
+    if (err) {
+      res.send(err);
+    } else {
+      res.sendStatus(200);
+    }
+  })
 })
 
 const PORT = 3000;

@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-mongoose.connect(process.env.DB_HOST);
+mongoose.connect(`mongodb://${process.env.MLAB_USERNAME}:${process.env.MLAB_PASSWORD}@ds131903.mlab.com:31903/stages`);
 
 var db = mongoose.connection;
 
@@ -21,6 +21,16 @@ var stageCollectionSchema = mongoose.Schema({
 
 var Stage = mongoose.model('Stage', stageCollectionSchema);
 
+const selectOne = (name, callback) => {
+  Stage.find( {name: name}, (err, data) => {
+    if (err) {
+      callback(err, null);
+    } else {
+      callback(null, data);
+    }
+  })
+}
+
 const selectAll = (callback) => {
   Stage.find({}, (err, items) => {
     if(err) {
@@ -32,26 +42,57 @@ const selectAll = (callback) => {
 };
 
 const saveBoard = (obj, callback) => {
-  // grab previous from the database
-  const newBoard = new Stage({
-    name: obj.name,
-    previous: 'null',
-    dancers: obj.dancers,
-    board: obj.board
-  });
-
-  newBoard.save( (err, data) => {
-    if (err) {
-      console.log('Save was NOT successful')
-      callback(err, null);
+  // grab most recent board and set it as the previous board
+  Stage.find( (err, data) => {
+    let newBoard;
+    if (!data[0]) {
+      newBoard = new Stage({
+        name: obj.name,
+        previous: null,
+        next: null,
+        dancers: obj.dancers,
+        board: obj.board
+      });
+      newBoard.save( (err, content) => {
+        if (err) {
+          console.log('Save was NOT successful')
+          callback(err, null);
+        } else {
+          console.log('Save was successful');
+          callback(null, content);
+        }
+      });
     } else {
-      console.log('Save was successful');
-      callback(null, data);
+      console.log('data[0]._id', data[0]._id);
+      console.log('obj.name: ', obj.name);
+      Stage.updateOne( { "_id": data[0]._id }, { $set: { "next": obj.name } }, (err, success) => {
+        if (err) {
+          console.log(err);
+        } else {
+          newBoard = new Stage({
+            name: obj.name,
+            previous: data[0].name,
+            next: null,
+            dancers: obj.dancers,
+            board: obj.board
+          });
+          newBoard.save( (err, content) => {
+            if (err) {
+              console.log('Save was NOT successful')
+              callback(err, null);
+            } else {
+              console.log('Save was successful');
+              callback(null, content);
+            }
+          });
+        }
+      });
     }
-  });
+  }).limit(1).sort({$natural:-1});
 }
 
 module.exports = {
+  selectOne,
   selectAll,
   saveBoard
 }

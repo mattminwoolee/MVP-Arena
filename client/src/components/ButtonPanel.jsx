@@ -27,10 +27,10 @@ class ButtonPanel extends React.Component {
   render() {
     return(
       <div className={ styles.buttonPanel }>
-        <button>Create</button>
         <button onClick={this.showModal}>Save</button>
-        <button onClick={this.props.clearStage}>Clear</button>
+        <button onClick={this.props.clearStage}>Create new Board</button>
         <button>Next</button>
+        <button>Previous</button>
         <SaveModal saveBoard={this.props.saveBoard} show={this.state.showModal} handleClose={this.hideModal} />
       </div>
     )

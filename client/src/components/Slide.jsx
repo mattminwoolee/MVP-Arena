@@ -4,13 +4,18 @@ import styles from './../styles/Slide.css';
 class Slide extends React.Component {
   constructor(props) {
     super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick() {
+    this.props.displayBoard(this.props.slide.name);
   }
 
   render() {
     return(
-      <div className={ styles.slide }>
+      <div onClick={this.handleClick} className={ styles.slide }>
         <div>
-          Board {this.props.slide.id}
+          Board Name: {this.props.slide.name}
         </div>
       </div>
     )
