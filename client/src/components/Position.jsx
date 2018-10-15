@@ -25,11 +25,15 @@ class Position extends React.Component {
   }
 
   render() {
+    // const animationStyle = {
+
+    // }
+
     return(
       <div className={ styles.position }>
         {
           this.props.value !== 0 
-          ? (<div><div 
+          ? (<div className={styles.transitionObject}><div 
             value={this.props.value}
             x={this.props.x} 
             y={this.props.y}

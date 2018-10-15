@@ -70,7 +70,7 @@ class App extends React.Component {
         <hr/>
         <div className={ styles.main }>
           <SlideDeck displayBoard={this.displayBoard} collection={this.state.collection}/>
-          <MainBoard ref={() => { console.log('hi')}} clickedBoard={this.state.clickedBoard} update={this.update}/>
+          <MainBoard clickedBoard={this.state.clickedBoard} update={this.update}/>
         </div>
         <br/>
         <div className={ styles.musicPlayer}>

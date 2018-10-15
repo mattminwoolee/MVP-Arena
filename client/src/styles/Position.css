@@ -10,7 +10,7 @@
 }
 
 :local .positionInner {
-  background-image: url('https://s3.us-east-2.amazonaws.com/mattminwoolee-mvp/images/circleWithCross.png');
+  background-image: url('https://s3.us-east-2.amazonaws.com/mattminwoolee-mvp/images/circleTransparent.png');
   background-repeat: no-repeat;
   background-size: cover;  
   background-position: center center;
@@ -19,11 +19,12 @@
   color: white;
   font-size: 2vmin;
   line-height: 6vmin;
-
-  /* transform: translate(350px,0); */
+  position: relative;
+  animation: mymove 5s;
+  /* transform: translate(50px,0), 2s; */
 }
 
-:local .transitionObject {
-  position: absolute;
-  transition: all 2s ease-in-out; 
+@keyframes mymove {
+  from {top: 200px;}
+  to {top: 0px;}
 }
