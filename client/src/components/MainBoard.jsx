@@ -7,21 +7,13 @@ class MainBoard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      previous: '',
-      totalDancers: 0,
-      dancers: {},
-      changePositionMode: {isOn: false, dancerId: null},
-      mainBoard: [
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      ]
+      name: this.props.clickedBoard.name,
+      next: this.props.clickedBoard.next,
+      previous: this.props.clickedBoard.previous,
+      dancers: this.props.clickedBoard.dancers,
+      mainBoard: this.props.clickedBoard.board,
+      totalDancers: Object.keys(props.clickedBoard.dancers).length,
+      changePositionMode: {isOn: false, dancerId: null}
     }
     this.handleClick = this.handleClick.bind(this);
     this.handleAlreadyClicked = this.handleAlreadyClicked.bind(this);
@@ -29,13 +21,15 @@ class MainBoard extends React.Component {
     this.saveBoard = this.saveBoard.bind(this);
   }
 
-  componentDidUpdate() {
-    // let board = this.props.clickedBoard;
-    // if (board) {
-    //   this.setState({
-    //     mainBoard: board.board,
-    //   })
-    // }
+  componentWillReceiveProps(nextProps) {
+    this.setState({ 
+      name: nextProps.clickedBoard.name,
+      next: nextProps.clickedBoard.next,
+      previous: nextProps.clickedBoard.previous,
+      dancers: nextProps.clickedBoard.dancers,
+      mainBoard: nextProps.clickedBoard.board,
+      totalDancers: Object.keys(nextProps.clickedBoard.dancers).length, 
+    });  
   }
 
   handleClick(e) {
@@ -83,14 +77,13 @@ class MainBoard extends React.Component {
   }
 
   handleAlreadyClicked(e) {
-    console.log('dancer already cliked: ', e.target.attributes.value.value);
+    console.log('dancer already cliked: ', e.target);
     let dancerId = e.target.attributes.value.value;
 
     // save the dancer id and enter change mode
     this.setState({
       changePositionMode: {isOn: true, dancerId: dancerId}, 
-    })
-
+    });
   }
 
   clearStage() {

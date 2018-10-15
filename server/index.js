@@ -8,7 +8,7 @@ var app = express();
 app.use(express.static(__dirname + '/../client/dist'));
 
 app.get('/api/stage/:name', (req, res) => {
-  console.log('req.params: ', req.params.name);
+  // console.log('req.params: ', req.params.name);
   db.selectOne(req.params.name, (err, data) => {
     if (err) {
       res.send(err);

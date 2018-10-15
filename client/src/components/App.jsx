@@ -10,7 +10,22 @@ class App extends React.Component {
     this.state = {
       update: true,
       collection: [],
-      clickedBoard: {}
+      clickedBoard: { 
+        name: '',
+        next: '',
+        previous: '',
+        dancers: {},
+        board: [
+          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        ]
+      }
     }
     this.update = this.update.bind(this);
     this.displayBoard = this.displayBoard.bind(this);
@@ -55,7 +70,7 @@ class App extends React.Component {
         <hr/>
         <div className={ styles.main }>
           <SlideDeck displayBoard={this.displayBoard} collection={this.state.collection}/>
-          <MainBoard clickedBoard={this.state.clickedBoard} update={this.update}/>
+          <MainBoard ref={() => { console.log('hi')}} clickedBoard={this.state.clickedBoard} update={this.update}/>
         </div>
         <br/>
         <div className={ styles.musicPlayer}>
