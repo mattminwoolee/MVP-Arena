@@ -15,7 +15,7 @@ class Slide extends React.Component {
     return(
       <div onClick={this.handleClick} className={ styles.slide }>
         <div>
-          Board Name: {this.props.slide.name}
+          {this.props.slide.name}
         </div>
       </div>
     )

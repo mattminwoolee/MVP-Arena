@@ -12,6 +12,7 @@ db.once('open', function() {
 });
 
 var stageCollectionSchema = mongoose.Schema({
+  id: Number,
   name: String,
   previous: Object,
   next: Object,
@@ -38,7 +39,7 @@ const selectAll = (callback) => {
     } else {
       callback(null, items);
     }
-  });
+  }).sort({"_id":1});
 };
 
 const saveBoard = (obj, callback) => {
@@ -65,13 +66,13 @@ const saveBoard = (obj, callback) => {
     } else {
       console.log('data[0]._id', data[0]._id);
       console.log('obj.name: ', obj.name);
-      Stage.updateOne( { "_id": data[0]._id }, { $set: { "next": obj.name } }, (err, success) => {
+      Stage.updateOne( { "_id": data[0]._id }, { $set: { "next": obj.dancers } }, (err, success) => {
         if (err) {
           console.log(err);
         } else {
           newBoard = new Stage({
             name: obj.name,
-            previous: data[0].name,
+            previous: data[0].dancers,
             next: null,
             dancers: obj.dancers,
             board: obj.board
@@ -88,7 +89,7 @@ const saveBoard = (obj, callback) => {
         }
       });
     }
-  }).limit(1).sort({$natural:-1});
+  }).limit(1).sort({"_id":-1});
 }
 
 module.exports = {

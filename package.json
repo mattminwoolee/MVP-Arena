@@ -18,7 +18,9 @@
     "nodemon": "^1.18.4",
     "path": "^0.12.7",
     "react": "^16.5.2",
-    "react-dom": "^16.5.2"
+    "react-addons-css-transition-group": "^15.6.2",
+    "react-dom": "^16.5.2",
+    "styled-components": "^4.0.0"
   },
   "devDependencies": {
     "babel": "^6.23.0",

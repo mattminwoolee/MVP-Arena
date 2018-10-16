@@ -9,9 +9,18 @@ class MainBoard extends React.Component {
     this.state = {
       name: this.props.clickedBoard.name,
       next: this.props.clickedBoard.next,
-      previous: this.props.clickedBoard.previous,
+      previous: {},
       dancers: this.props.clickedBoard.dancers,
-      mainBoard: this.props.clickedBoard.board,
+      mainBoard: [
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      ],
       totalDancers: Object.keys(props.clickedBoard.dancers).length,
       changePositionMode: {isOn: false, dancerId: null}
     }
@@ -135,6 +144,7 @@ class MainBoard extends React.Component {
           value={positionValue}
           x={rowIndex} 
           y={colIndex}
+          previous={this.state.previous ? this.state.previous[positionValue] : null}
           handleClick={this.handleClick}
           handleAlreadyClicked={this.handleAlreadyClicked}
           /> ))}

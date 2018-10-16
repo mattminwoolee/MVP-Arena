@@ -9,7 +9,7 @@
   line-height: 6vmin;
 }
 
-:local .positionInner {
+/* :local .positionInner {
   background-image: url('https://s3.us-east-2.amazonaws.com/mattminwoolee-mvp/images/circleTransparent.png');
   background-repeat: no-repeat;
   background-size: cover;  
@@ -21,10 +21,9 @@
   line-height: 6vmin;
   position: relative;
   animation: mymove 5s;
-  /* transform: translate(50px,0), 2s; */
-}
+} */
 
-@keyframes mymove {
+/* @keyframes mymove {
   from {top: 200px;}
   to {top: 0px;}
-}
+} */

@@ -4,4 +4,22 @@
   width: 25vmin;
   height: 10vmin; 
   margin: 3vmin auto;
+
+  color: var(--color);
+  transition: 0.25s;
+  
+  /* &:hover,
+  &:focus { 
+    border-color: var(--hover);
+    color: #fff;
+  } */
+}
+
+:local .slide:hover, .slide:focus {
+  animation: pulse 1s;
+  box-shadow: 0 0 0 2em rgba(#fff,0);
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 var(--hover); }
 }
