@@ -92,8 +92,14 @@ const saveBoard = (obj, callback) => {
   }).limit(1).sort({"_id":-1});
 }
 
+const deleteAll = (callback) => {
+  Stage.deleteMany({})
+}
+
+
 module.exports = {
   selectOne,
   selectAll,
-  saveBoard
+  saveBoard,
+  deleteAll
 }

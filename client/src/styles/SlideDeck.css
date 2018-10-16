@@ -1,5 +1,9 @@
 :local .slideDeck {
   width: 39vmin;
+  height: 72vmin;
   border-style: solid;
+  border-color: darkgray;
   border-width: 1px;
+  border-radius: 4px;
+  overflow: scroll;
 }

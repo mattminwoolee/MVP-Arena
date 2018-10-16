@@ -1,6 +1,8 @@
 :local .slide {
   border-style: solid;
   border-width: 1px;
+  border-radius: 4px;
+  border-color: darkgray;
   width: 25vmin;
   height: 10vmin; 
   margin: 3vmin auto;
@@ -13,10 +15,9 @@
 
 :local .slide:hover, .slide:focus {
   animation: pulse 1s;
-  /* box-shadow: 0 0 0 2em rgba(#fff,0); */
   box-shadow: 0.4vmin 0.4vmin 0.4vmin 0.4vmin #ccc;
 }
 
-@keyframes pulse {
+/* @keyframes pulse {
   0% { box-shadow: 0 0 0 0 var(--hover); }
-}
+} */

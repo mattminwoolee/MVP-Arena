@@ -4,6 +4,7 @@ import MainBoard from './MainBoard.jsx';
 import SlideDeck from './SlideDeck.jsx';
 import MusicPlayer from './MusicPlayer.jsx';
 
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -107,6 +108,7 @@ class App extends React.Component {
           Arena
         </h1>
         <hr/>
+        <br/>
         <div className={ styles.main }>
           <SlideDeck displayBoard={this.displayBoard} collection={this.state.collection}/>
           <MainBoard 
@@ -119,7 +121,7 @@ class App extends React.Component {
         </div>
         <br/>
         <div className={ styles.musicPlayer}>
-          <MusicPlayer />
+          <MusicPlayer handleNext={this.handleNext}/>
         </div>
       </div>
     )

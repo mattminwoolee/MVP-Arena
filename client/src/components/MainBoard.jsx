@@ -32,15 +32,20 @@ class MainBoard extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-
-    this.setState({ 
-      name: nextProps.clickedBoard.name,
-      next: nextProps.clickedBoard.next,
-      previous: nextProps.clickedBoard.previous,
-      dancers: nextProps.clickedBoard.dancers,
-      mainBoard: nextProps.clickedBoard.board,
-      totalDancers: Object.keys(nextProps.clickedBoard.dancers).length, 
-    });  
+    // check if if the board exists
+    if ( nextProps.clickedBoard ) {
+      let next = (nextProps.clickedBoard.next) ? nextProps.clickedBoard.next: [null];
+      let previous = (nextProps.clickedBoard.previous) ? nextProps.clickedBoard.previous: [null];
+  
+      this.setState({ 
+        name: nextProps.clickedBoard.name,
+        next: next,
+        previous: previous,
+        dancers: nextProps.clickedBoard.dancers,
+        mainBoard: nextProps.clickedBoard.board,
+        totalDancers: Object.keys(nextProps.clickedBoard.dancers).length, 
+      });  
+    }
   }
 
   handleClick(e) {
@@ -98,6 +103,16 @@ class MainBoard extends React.Component {
   }
 
   clearStage() {
+    $.ajax({
+      url: 'http://localhost:3000/api/stages',
+      method: 'DELETE',
+      contentType: 'application/json',
+      data: JSON.stringify(data),
+      success: (response) => {
+        console.log('Success! ', response);
+        this.props.update();
+      }
+    })
     this.setState({
       dancers: [],
       totalDancers: 0,

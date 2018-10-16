@@ -1,8 +1,10 @@
 :local .mainBoard {
   /* background-color: white; */
   width: 120vmin;
+  border-color: darkgray;
   border-style: solid;
   border-width: 1px;
+  border-radius: 4px;
 }
 
 :local .gridBoard {

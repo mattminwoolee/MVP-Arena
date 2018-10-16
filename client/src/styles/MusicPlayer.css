@@ -1,5 +1,10 @@
 :local .musicPlayer {
   /* background-color: white; */
-  border-style: solid;
+  /* border-style: solid; */
   border-width: 1px;
+}
+
+:local .audio {
+  /* background-color: white; */
+  width: 100%;
 }

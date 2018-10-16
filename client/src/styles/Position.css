@@ -2,7 +2,7 @@
   vertical-align: middle;
 }
 :local .position > div {
-  background-image: url('https://s3.us-east-2.amazonaws.com/mattminwoolee-mvp/images/crossTransparent.png');
+  background-image: url('/crossTransparent.png');
   background-repeat: no-repeat;
   background-size: cover;  
   background-position: center center;
@@ -10,7 +10,7 @@
 }
 
 :local .positionInner {
-  background-image: url('https://s3.us-east-2.amazonaws.com/mattminwoolee-mvp/images/circleTransparent.png');
+  background-image: url('/circleTransparent.png');
   background-repeat: no-repeat;
   background-size: cover;  
   background-position: center center;
