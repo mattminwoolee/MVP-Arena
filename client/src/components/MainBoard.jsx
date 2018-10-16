@@ -22,7 +22,8 @@ class MainBoard extends React.Component {
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
       ],
       totalDancers: Object.keys(props.clickedBoard.dancers).length,
-      changePositionMode: {isOn: false, dancerId: null}
+      changePositionMode: {isOn: false, dancerId: null},
+
     }
     this.handleClick = this.handleClick.bind(this);
     this.handleAlreadyClicked = this.handleAlreadyClicked.bind(this);
@@ -31,6 +32,7 @@ class MainBoard extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
+
     this.setState({ 
       name: nextProps.clickedBoard.name,
       next: nextProps.clickedBoard.next,
@@ -136,7 +138,7 @@ class MainBoard extends React.Component {
     return(
       <div className={ styles.mainBoard }>
         <div>
-          <ButtonPanel saveBoard={this.saveBoard} clearStage={this.clearStage}/>
+          <ButtonPanel handlePrevious={this.props.handlePrevious} handleNext={this.props.handleNext} saveBoard={this.saveBoard} clearStage={this.clearStage}/>
         </div>
         <div className={ styles.gridBoard }>
           {this.state.mainBoard.map( (row, rowIndex) => row.map( (positionValue, colIndex) => <Position 
@@ -144,7 +146,10 @@ class MainBoard extends React.Component {
           value={positionValue}
           x={rowIndex} 
           y={colIndex}
-          previous={this.state.previous ? this.state.previous[positionValue] : null}
+          previousBoard={this.props.previousBoard}
+          nextBoard={this.props.nextBoard}
+          previous={this.props.previousBoard ? this.state.previous[positionValue] : null}
+          next={this.props.nextBoard ? this.state.next[positionValue] : null}
           handleClick={this.handleClick}
           handleAlreadyClicked={this.handleAlreadyClicked}
           /> ))}

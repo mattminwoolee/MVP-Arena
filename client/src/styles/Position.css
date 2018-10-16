@@ -2,14 +2,14 @@
   vertical-align: middle;
 }
 :local .position > div {
-  background-image: url('https://s3.us-east-2.amazonaws.com/mattminwoolee-mvp/images/cross.png');
+  background-image: url('https://s3.us-east-2.amazonaws.com/mattminwoolee-mvp/images/crossTransparent.png');
   background-repeat: no-repeat;
   background-size: cover;  
   background-position: center center;
   line-height: 6vmin;
 }
 
-/* :local .positionInner {
+:local .positionInner {
   background-image: url('https://s3.us-east-2.amazonaws.com/mattminwoolee-mvp/images/circleTransparent.png');
   background-repeat: no-repeat;
   background-size: cover;  
@@ -21,7 +21,7 @@
   line-height: 6vmin;
   position: relative;
   animation: mymove 5s;
-} */
+}
 
 /* @keyframes mymove {
   from {top: 200px;}

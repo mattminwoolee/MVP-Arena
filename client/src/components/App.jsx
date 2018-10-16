@@ -25,10 +25,14 @@ class App extends React.Component {
           [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
           [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         ]
-      }
+      },
+      nextBoard: {},
+      previousBoard: {},
     }
     this.update = this.update.bind(this);
     this.displayBoard = this.displayBoard.bind(this);
+    this.handleNext = this.handleNext.bind(this);
+    this.handlePrevious = this.handlePrevious.bind(this);
   }
   update(){
     this.componentDidMount();
@@ -45,6 +49,41 @@ class App extends React.Component {
           clickedBoard: success[0]
         })
       }
+    })
+  }
+
+  handleNext() {
+    let current = this.state.clickedBoard;
+    let collection = this.state.collection;
+
+    let indexOfCurrent;
+    for (var [index, elem] of collection.entries() ) {
+      if (elem.name === current.name) {
+        indexOfCurrent = index;
+      }
+    }
+    
+    this.setState({
+      clickedBoard: collection[indexOfCurrent+1],
+      previousBoard: collection[indexOfCurrent],
+      nextBoard: null,
+    })
+  }
+
+  handlePrevious() {
+    let current = this.state.clickedBoard;
+    let collection = this.state.collection;
+    let indexOfCurrent;
+    for (var [index, elem] of collection.entries() ) {
+      if (elem.name === current.name) {
+        indexOfCurrent = index;
+      }
+    }
+    
+    this.setState({
+      clickedBoard: collection[indexOfCurrent-1],
+      nextBoard: collection[indexOfCurrent],
+      previousBoard: null
     })
   }
 
@@ -70,7 +109,13 @@ class App extends React.Component {
         <hr/>
         <div className={ styles.main }>
           <SlideDeck displayBoard={this.displayBoard} collection={this.state.collection}/>
-          <MainBoard clickedBoard={this.state.clickedBoard} update={this.update}/>
+          <MainBoard 
+          previousBoard={this.state.previousBoard}
+          nextBoard={this.state.nextBoard}
+          handlePrevious={this.handlePrevious} 
+          handleNext={this.handleNext} 
+          clickedBoard={this.state.clickedBoard} 
+          update={this.update}/>
         </div>
         <br/>
         <div className={ styles.musicPlayer}>

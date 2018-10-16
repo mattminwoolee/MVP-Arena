@@ -29,8 +29,8 @@ class ButtonPanel extends React.Component {
       <div className={ styles.buttonPanel }>
         <button onClick={this.showModal}>Save</button>
         <button onClick={this.props.clearStage}>Create new Board</button>
-        <button>Next</button>
-        <button>Previous</button>
+        <button onClick={this.props.handleNext}>Next</button>
+        <button onClick={this.props.handlePrevious} >Previous</button>
         <SaveModal saveBoard={this.props.saveBoard} show={this.state.showModal} handleClose={this.hideModal} />
       </div>
     )

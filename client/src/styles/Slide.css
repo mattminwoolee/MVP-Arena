@@ -8,16 +8,13 @@
   color: var(--color);
   transition: 0.25s;
   
-  /* &:hover,
-  &:focus { 
-    border-color: var(--hover);
-    color: #fff;
-  } */
+  line-height: 10vmin;
 }
 
 :local .slide:hover, .slide:focus {
   animation: pulse 1s;
-  box-shadow: 0 0 0 2em rgba(#fff,0);
+  /* box-shadow: 0 0 0 2em rgba(#fff,0); */
+  box-shadow: 0.4vmin 0.4vmin 0.4vmin 0.4vmin #ccc;
 }
 
 @keyframes pulse {
