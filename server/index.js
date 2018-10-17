@@ -40,7 +40,13 @@ app.post('/api/stages', bodyParser.json(), (req, res) => {
 })
 
 app.delete('/api/stages', (req, res) => {
-  db.deleteAll();
+  db.deleteAll( (err, data) => {
+    if (err) {
+      res.send(err);
+    } else {
+      res.sendStatus(200);
+    }
+  });
 })
 
 const PORT = 3000;

@@ -106,27 +106,25 @@ class MainBoard extends React.Component {
     $.ajax({
       url: 'http://localhost:3000/api/stages',
       method: 'DELETE',
-      contentType: 'application/json',
-      data: JSON.stringify(data),
       success: (response) => {
         console.log('Success! ', response);
         this.props.update();
+        this.setState({
+          dancers: [],
+          totalDancers: 0,
+          changePositionMode: {isOn: false, dancerId: null},
+          mainBoard:[
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          ]
+        })
       }
-    })
-    this.setState({
-      dancers: [],
-      totalDancers: 0,
-      changePositionMode: {isOn: false, dancerId: null},
-      mainBoard:[
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      ]
     })
   }
 
