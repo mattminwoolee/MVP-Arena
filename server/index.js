@@ -40,6 +40,7 @@ app.post('/api/stages', bodyParser.json(), (req, res) => {
 })
 
 app.delete('/api/stages', (req, res) => {
+  console.log(req);
   db.deleteAll( (err, data) => {
     if (err) {
       res.send(err);

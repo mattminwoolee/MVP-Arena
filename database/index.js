@@ -93,7 +93,13 @@ const saveBoard = (obj, callback) => {
 }
 
 const deleteAll = (callback) => {
-  Stage.deleteMany({})
+  Stage.deleteMany({}, (err, data) => {
+    if (err) {
+      callback(err);
+    } else {
+      callback(data);
+    }
+  })
 }
 
 
