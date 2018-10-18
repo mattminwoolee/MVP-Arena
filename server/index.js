@@ -40,8 +40,7 @@ app.post('/api/stages', bodyParser.json(), (req, res) => {
 })
 
 app.delete('/api/stages', (req, res) => {
-  console.log(req);
-  db.deleteAll( (err, data) => {
+    db.deleteAll( (err, data) => {
     if (err) {
       res.send(err);
     } else {
@@ -50,6 +49,6 @@ app.delete('/api/stages', (req, res) => {
   });
 })
 
-const PORT = 3000;
+const PORT = process.event.PORT || 3000;
 app.listen(PORT, () => console.log(`listening on port ${PORT}`));
 // kill $(lsof -t -i:3001)
