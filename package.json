@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "react-dev": "webpack -d --watch",
-    "start": "nodemon server/index.js"
+    "start": "node server/index.js"
+  },
+  "engines": {
+    "node": "0.12.7"
   },
   "author": "Matthew Lee",
   "license": "ISC",
