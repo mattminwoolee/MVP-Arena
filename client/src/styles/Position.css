@@ -2,7 +2,7 @@
   vertical-align: middle;
 }
 :local .position > div {
-  background-image: url('/crossTransparent.png');
+  background-image: url('/images/crossTransparent.png');
   background-repeat: no-repeat;
   background-size: cover;  
   background-position: center center;
@@ -10,7 +10,7 @@
 }
 
 :local .positionInner {
-  background-image: url('/circleTransparent.png');
+  background-image: url('/images/circleTransparent.png');
   background-repeat: no-repeat;
   background-size: cover;  
   background-position: center center;

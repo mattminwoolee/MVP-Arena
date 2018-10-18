@@ -56,7 +56,7 @@ class Position extends React.Component {
     }
 
     let Style = styled.div`
-    background-image: url('https://s3.us-east-2.amazonaws.com/mattminwoolee-mvp/images/circleTransparent.png');
+    background-image: url('/images/circleTransparent.png');
     background-repeat: no-repeat;
     background-size: cover;  
     background-position: center center;
