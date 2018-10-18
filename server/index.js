@@ -49,6 +49,6 @@ app.delete('/api/stages', (req, res) => {
   });
 })
 
-const PORT = process.event.PORT || 3000;
+let PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`listening on port ${PORT}`));
 // kill $(lsof -t -i:3001)
