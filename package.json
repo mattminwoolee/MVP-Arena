@@ -8,7 +8,7 @@
     "start": "node server/index.js"
   },
   "engines": {
-    "node": "0.12.7"
+    "node": "8.11.3"
   },
   "author": "Matthew Lee",
   "license": "ISC",
