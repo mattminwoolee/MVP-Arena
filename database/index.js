@@ -64,8 +64,6 @@ const saveBoard = (obj, callback) => {
         }
       });
     } else {
-      console.log('data[0]._id', data[0]._id);
-      console.log('obj.name: ', obj.name);
       Stage.updateOne( { "_id": data[0]._id }, { $set: { "next": obj.dancers } }, (err, success) => {
         if (err) {
           console.log(err);

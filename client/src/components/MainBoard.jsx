@@ -112,18 +112,9 @@ class MainBoard extends React.Component {
         this.setState({
           dancers: [],
           totalDancers: 0,
-          changePositionMode: {isOn: false, dancerId: null},
-          mainBoard:[
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-          ]
+          changePositionMode: {isOn: false, dancerId: null}
         })
+        this.props.clearBoard();
       }
     })
   }

@@ -101,6 +101,27 @@ class App extends React.Component {
     })
   }
 
+  clearBoard() {
+    this.setState({
+      clickedBoard: { 
+        name: '',
+        next: '',
+        previous: '',
+        dancers: {},
+        board: [
+          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        ]
+      },
+    })
+  }
+
   render() {
     return(
       <div className={ styles.appContainer }>
@@ -112,6 +133,7 @@ class App extends React.Component {
         <div className={ styles.main }>
           <SlideDeck displayBoard={this.displayBoard} collection={this.state.collection}/>
           <MainBoard 
+          clearBoard={this.clearBoard.bind(this)}
           previousBoard={this.state.previousBoard}
           nextBoard={this.state.nextBoard}
           handlePrevious={this.handlePrevious} 
